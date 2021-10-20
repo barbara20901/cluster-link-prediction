@@ -9,8 +9,8 @@ This folder contains all the data files used:
        -> stations_19.csv.gz - name, id, latitude and longitude for stations with trips in 2019
   
   ### METEOROLOGY DATA - IEM ###
-       -> meteo_nyc_18.csv - weather data according to NYC ASOS station in 2018
-       -> meteo_nyc_19.csv - weather data according to NYC ASOS station in 2019
+       -> meteo_nyc_18.csv.gz - weather data according to NYC ASOS station in 2018
+       -> meteo_nyc_19.csv.gz - weather data according to NYC ASOS station in 2019
   
   ### STATION STATUS - OPENBUS ### 
        -> bikes_avail_18.csv.gz - stations status in 2018 
