@@ -848,12 +848,12 @@ def inner_measures(out_adatc):
         co_diss_cum=0
         for point in out_adatc['new_clusters'][cl][:-1]:
             for point_adv in out_adatc['new_clusters'][cl][i:]:
-                i1=stat_cb_id_corresp['distances_id'].loc[stat_cb_id_corresp['citibike_station_id']==point].values[0]
-                i2=stat_cb_id_corresp['distances_id'].loc[stat_cb_id_corresp['citibike_station_id']==point_adv].values[0]
+                i1=stations_18['distances_id'].loc[stations_18['citibike_station_id']==point].values[0]
+                i2=stations_18['distances_id'].loc[stations_18['citibike_station_id']==point_adv].values[0]
                 #########################################
                 ##geographical distance
-                stat_coord=pd.DataFrame(pd.read_csv('/home/btavares/adatc/cluster_data/distances_ORSM_API/%s/stat_id%s_to_all.csv' %(choose_id_folder_new(i1),str(i1))))
-                gd_act=stat_coord['0'][i2-1]
+                dist=np.array(df_distances)[i1-1,i2-1]
+                gd_act=dist
                 gd_cum=gd_cum+gd_act
                 #########################################
                 ##check_out diff
@@ -886,12 +886,12 @@ def inter_measures(out_adatc):
 
     for l in out_adatc['new_medoids']:
         for m in out_adatc['new_medoids'][i:]:
-            i1=stat_cb_id_corresp['distances_id'].loc[stat_cb_id_corresp['citibike_station_id']==l].values[0]
-            i2=stat_cb_id_corresp['distances_id'].loc[stat_cb_id_corresp['citibike_station_id']==m].values[0]
+            i1=stations_18['distances_id'].loc[stations_18['citibike_station_id']==l].values[0]
+            i2=stations_18['distances_id'].loc[stations_18['citibike_station_id']==m].values[0]
             #########################################
             ##geographical distance
-            stat_coord=pd.DataFrame(pd.read_csv('/home/btavares/adatc/cluster_data/distances_ORSM_API/%s/stat_id%s_to_all.csv' %(choose_id_folder_new(i1),str(i1))))
-            gd_act=stat_coord['0'][i2-1]
+            dist=np.array(df_distances)[i1-1,i2-1]
+            gd_act=dist
             gd_cum=gd_cum+gd_act
             #########################################
             ##check_out diff
@@ -914,7 +914,7 @@ def inter_measures(out_adatc):
     return value #(gd_avg,co_diss_avg)
 
 #############################################################################################################################
-##Params Combinations#
+##Testing Some Intrinsic Parameters Combination#
 k1_val=50
 k2_val=10
 ro1_val=5.5
@@ -925,6 +925,4 @@ print('Finished ADATC for Parameters Combination')
 print('Starting to Calculate Inner and Inter Metrics for Parameters Combination')
 metrics_inner=inner_measures(adatc_comb[0])
 metrics_inter=inter_measures(adatc_comb[0])
-
 print('DONE')
-
