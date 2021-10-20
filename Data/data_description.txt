@@ -1,0 +1,26 @@
+This folder contains all the data files used:
+  
+  ### CITIBIKE HISTORICAL TRIPS ###
+       -> data_18_01.csv - citibike travel records in January 2018
+               ...
+       -> data_18_12.csv - citibike travel records in December 2018
+       -> cb_trips_18.csv.gz - citibike travel records in 2018
+       -> stations_18.csv - name, id, latitude and longitude for stations with trips in 2018 
+       -> data_19_01.csv - citibike travel records in January 2019
+               ...
+       -> data_19_12.csv - citibike travel records in December 2019
+       -> cb_trips_19.csv.gz - citibike travel records in 2019
+       -> stations_19.csv - name, id, latitude and longitude for stations with trips in 2019
+  
+  ### METEOROLOGY DATA - IEM ###
+       -> meteo_nyc_18.csv - weather data according to NYC ASOS station in 2018
+       -> meteo_nyc_19.csv - weather data according to NYC ASOS station in 2019
+  
+  ### STATION STATUS - OPENBUS ### 
+       -> bikes_avail_18_01.csv - stations status in January 2018
+               ...
+       -> bikes_avail_18_12.csv - stations status in December 2018
+       -> bikes_avail_18.csv.gz - stations status in 2018
+  
+  ### GEOGRAPHICAL DISTANCES - ORSM ###
+       ->
