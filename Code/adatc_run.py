@@ -41,8 +41,8 @@ def check_period_ts(ts,t):
         start_time=7
         stop_time=11
         day='Weekday'
-        nr_days=261
-        periods=4
+        nr_days=261 #nr of weekdays in 2018
+        periods=4 #4 periods of 1 hour from 7AM to 11AM 
         if 0 <= t <= 3: 
             flag=True
         else:
@@ -51,7 +51,7 @@ def check_period_ts(ts,t):
         start_time=12
         stop_time=16
         day='Weekday'
-        nr_days=261
+        nr_days=261 #nr of weekdays in 2018
         periods=4
         if 0 <= t <= 3: 
             flag=True
@@ -60,9 +60,9 @@ def check_period_ts(ts,t):
     elif ts==3:
         start_time=17
         stop_time=22
-        day='Weekday'
-        nr_days=261
-        periods=5
+        day='Weekday' 
+        nr_days=261 #nr of weekdays in 2018
+        periods=5 #5 periods of 1 hour from 17PM to 22PM 
         if 0 <= t <= 4:
             flag=True
         else:
@@ -71,8 +71,8 @@ def check_period_ts(ts,t):
         start_time=9
         stop_time=17
         day='Weekend'
-        nr_days=104
-        periods=8
+        nr_days=104 #nr of weekends in 2018
+        periods=8 
         if 0 <= t <= 7:
             flag=True
         else:
@@ -81,7 +81,7 @@ def check_period_ts(ts,t):
         start_time=18
         stop_time=23
         day='Weekend'
-        nr_days=104
+        nr_days=104 #nr of weekends in 2018
         periods=5
         if 0 <= t <= 4:  
             flag=True
@@ -92,7 +92,8 @@ def check_period_ts(ts,t):
 ########################################################
 """ NR OF BIKES RENTED FUNCTION """
 
-#Number of Bikes Rented in Station S in Time-Slot TS and in period T
+#Number of Bikes Rented in Station S in Time Slot TS and in period T
+#df_ts is a dataframe with the citibike trips in the time slot ts: df_ts in [data_18_all_ts1,data_18_all_ts2,data_18_all_ts3,data_18_all_ts4,data_18_all_ts5]
 def nr_bikes_rented_ts(df_ts,station,ts,t):
     if station in stations_18['citibike_station_id'].values:
         if check_period_ts(ts,t)[0]: 
@@ -105,7 +106,7 @@ def nr_bikes_rented_ts(df_ts,station,ts,t):
 ########################################################
 """ CLUSTERING AdaTC """
 
-print('Run AdaTC Classes and Plots Code')
+print('Run AdaTC Classes')
 # 1. Geo-clustering: K-MEDOIDS
 class GeoC1:
     
@@ -242,7 +243,7 @@ class T_Matrix:
         self.it=it
     ##################################################################################################
     def ride_to_cluster(self,s,ts,points,nr_k1):
-        #data_all has the dataframe of trips by timeslots
+        #data_all has the dataframe of trips by time slots
 	data_all=[data_18_all_ts1,data_18_all_ts2,data_18_all_ts3,data_18_all_ts4,data_18_all_ts5]
         data=data_all[ts-1]
         data_s=data.loc[data['start_station_id']==s]
@@ -425,7 +426,7 @@ class TC1:
 # 4. AdaTC Auxiliar Functions
 print('Running AdaTC Auxiliar Functions')
 
-def new_nr_groups(clf,tlf,n,its): 
+def new_nr_groups(clf,tlf,n,its):  #number of groups in which each cluster divides in Geo-Clustering after first iteration
     k1_classes=[]
     k1_classes_dec=[]
     k1_classes_int=[]
